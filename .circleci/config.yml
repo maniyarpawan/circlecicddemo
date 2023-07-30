@@ -25,7 +25,7 @@ jobs:
           version: 20.10.14
           docker_layer_caching: true
       - run: |
-            docker build -t maniyarpawan/circlecicddocker
+            docker build -t maniyarpawan/circlecicddocker .
             echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
             docker push maniyarpawan/circlecicddocker
 workflows:
