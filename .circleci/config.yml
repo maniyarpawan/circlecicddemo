@@ -39,7 +39,7 @@ jobs:
           name: Assemble release build
           command: |
             ./gradlew assembleRelease
-  build:
+  docker-image:
     docker:
       - image: cimg/go:1.17
     resource_class: xlarge
@@ -60,4 +60,4 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - build
+      - docker-image
