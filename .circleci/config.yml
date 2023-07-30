@@ -19,8 +19,8 @@ jobs:
     resource_class: xlarge
     # These next lines define the Android machine image executor.
     # See: https://circleci.com/docs/executor-types/
-    executor:
-      name: android/android-machine
+    # executor:
+    #   name: android/android-machine
 
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
