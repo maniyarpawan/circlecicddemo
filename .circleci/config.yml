@@ -48,7 +48,7 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
           docker_layer_caching: true
-      - run: docker build -t maniyarpawan/circlecicddocker .
+      - run: docker build -t maniyarpawan/circlecicddocker
       - run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
       - run: docker push maniyarpawan/circlecicddocker
 
