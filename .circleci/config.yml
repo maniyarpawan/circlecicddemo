@@ -2,12 +2,12 @@
 # See: https://circleci.com/docs/configuration-reference
 # For a detailed guide to building and testing on Android, read the docs:
 # https://circleci.com/docs/language-android/ for more details.
-version: 2.1
+#version: 2.1
 
 # Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
 # See: https://circleci.com/docs/orb-intro/
-orbs:
-  android: circleci/android@1.0.3
+#orbs:
+#  android: circleci/android@1.0.3
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
