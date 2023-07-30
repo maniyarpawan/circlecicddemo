@@ -40,18 +40,18 @@ jobs:
           command: |
             ./gradlew assembleRelease
   docker-image:
-    docker:
-      - image: cimg/go:1.17
-    resource_class: xlarge
+    docker:
+      - image: cimg/go:1.17
+    resource_class: xlarge
     steps:
-      - checkout
-      - setup_remote_docker:
-          version: 20.10.14
-          docker_layer_caching: true
-      - run: |
-          docker build -t maniyarpawan/circlecicddocker .
-          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-          docker push maniyarpawan/circlecicddocker
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
+      - run: |
+          docker build -t maniyarpawan/circlecicddocker
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          docker push maniyarpawan/circlecicddocker
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
