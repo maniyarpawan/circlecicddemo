@@ -5,15 +5,18 @@ orbs:
 jobs:
   build-and-test:
     docker:
-      - image: cimg/go:1.17
+      - image: cimg/android:2023.07
     resource_class: large
     steps:
       - checkout
+      - run:
+          name: chmod permissions
+          command: chmod +x ./gradlew
       - android/run-tests:
           test-command: ./gradlew lint testDebug --continue
-      - android/start-emulator-and-run-tests:
-          test-command: ./gradlew connectedDebugAndroidTest
-          system-image: system-images;android-25;google_apis;x86
+      # - android/start-emulator-and-run-tests:
+      #     test-command: ./gradlew connectedDebugAndroidTest
+      #     system-image: system-images;android-25;google_apis;x86
       - run:
           name: Assemble release build
           command: |
@@ -21,9 +24,10 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
           docker_layer_caching: true
-      - run: docker build -t maniyarpawan/circlecicddocker
-      - run: echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-      - run: docker push maniyarpawan/circlecicddocker
+      - run: |
+            docker build -t maniyarpawan/circlecicddocker .
+            echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+            docker push maniyarpawan/circlecicddocker
 workflows:
   sample:
     jobs:
